@@ -1,0 +1,133 @@
+package arreglos;
+
+import clases.Clientes;
+import clases.Producto;
+import java.util.ArrayList;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+public class ArregloProductos {
+
+	// public class ArregloImpresoras {
+	// Atributo privado
+	private ArrayList<Producto> prod;
+	private String archivo;
+
+	// Constructor
+	public ArregloProductos() {
+		prod = new ArrayList<Producto>();
+		adicionar(new Producto(000001, "Epson", 1350.0, 900, 100, 1000));
+		adicionar(new Producto(000002, "HP", 2300.0, 800, 200, 1000));
+		adicionar(new Producto(000003, "Samsung", 2100.0, 700, 300, 1000));
+		adicionar(new Producto(000004, "Sony", 1900.0, 600, 400, 1000));
+		adicionar(new Producto(000005, "LG", 1050.0, 500, 500, 1000));
+		adicionar(new Producto(000006, "Samsung", 4210.0, 400, 600, 1000));
+		adicionar(new Producto(000007, "Epson", 2090.0, 300, 700, 1000));
+		adicionar(new Producto(000008, "LG", 3520.0, 900, 200, 8000));
+		adicionar(new Producto(000009, "Canon", 3500.0, 100, 900, 1000));
+		adicionar(new Producto(000010, "Logitech", 2200.0, 500, 500, 1000));
+	}
+
+	// Operaciones
+	public void adicionar(Producto x) {
+		prod.add(x);
+	}
+
+	public Producto obtener(int i) {
+		return prod.get(i);
+	}
+
+	public int tamaño() {
+		return prod.size();
+	}
+
+	public void eliminar(Producto x) {
+		prod.remove(x);
+	}
+
+	public void reinicializarArreglo() {
+		if (tamaño() > 0)
+			prod.clear();
+	}
+
+	}
+
+	public Producto buscar(int codigo) {
+		Clientes x;
+		for (int i = 0; i < tamaño(); i++) {
+			x = obtener(i);
+			if (x.getCodigoProducto() == codigo)
+				return x;
+		}
+		return null;
+	}
+
+	public Producto buscar(String dni) {
+		Clientes x;
+		for (int i = 0; i < tamaño(); i++) {
+			x = obtener(i);
+			if (x.getDni().equals(dni))
+				return x;
+		}
+		return null;
+	}
+
+// Operaciones públicas complementarias
+	public int codigoCorrelativo() {
+		if (tamaño() == 0)
+			return 10001;
+		else
+			return obtener(tamaño() - 1).getCodigoProducto() + 1;
+	}
+
+	public void grabarProductos() {
+		try {
+			PrintWriter pw;
+			String linea;
+			Producto x;
+			pw = new PrintWriter(new FileWriter("archivo"));
+			for (int i = 0; i < prod.size(); i++) {
+				x = prod.get(i);
+//	for (int i=0; i<tamaño(); i++) {
+//	x = obtener(i);
+				linea = x.getCodigoCliente() + ";" + x.getPrecio() + ";" + x.getDirección() + ";" + x.getTeléfono()
+						+ ";" + x.getDni();
+//	x.getPeso() + ";" +
+//	x.getEstatura();
+				pw.println(linea);
+			}
+			pw.close();
+		} catch (Exception e) {
+		}
+	}
+
+	public void cargarPersonas() {
+		try {
+			BufferedReader br;
+			String linea, nombres, apellidos, dirección, telefono, dni;
+			String s[];
+			int codigoProducto;
+//	double peso, estatura;
+			br = new BufferedReader(new FileReader("archivo"));
+			while ((linea = br.readLine()) != null) {
+				s = linea.split(";");
+				codigoProducto = Integer.parseInt(s[0].trim());
+				nombres = s[1].trim();
+				apellidos = s[1].trim();
+				dirección = s[1].trim();
+				telefono = s[1].trim();
+				dni = s[1].trim();
+//	peso = Double.parseDouble(s[2].trim());
+//	estatura = Double.parseDouble(s[3].trim());
+				adicionar(new Productos(codigoProducto, nombres, apellidos, dirección, telefono, dni));
+
+			}
+			br.close();
+		} catch (Exception e) {
+		}
+	}
+}

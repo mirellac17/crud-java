@@ -1,0 +1,57 @@
+package clases;
+
+public class Reportes {
+
+	 private int codigoVenta; 
+	 private int codigoCliente, codigoProducto;
+	 private String fecha;
+	 //cantidad; 
+	 private double importe_subtotal,importe_del_IGV,importe_total;
+	 //precio;
+	 
+}
+	
+//	Listado general de ventas mostrando en cada caso: código de venta, código de cliente, 
+//	código de producto, fecha, importe subtotal, importe del IGV e importe total.
+	
+	// public Reportes(int codigoVenta, int codigoCliente, int codigoProducto,String fecha, double importe_subtotal, double importe_del_IGV, double importe_total ) {
+	
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 

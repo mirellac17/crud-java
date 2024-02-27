@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/Py_Ventas/src/gui/AltaCliente.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="gui.AltaCliente"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="Py_Ventas"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Py_Ventas"/>
+</launchConfiguration>

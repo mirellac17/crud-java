@@ -1,0 +1,11 @@
+9020;Mirella Soe; Casallo Torres;Av. Arequipa N°100 Lima;7155089;11164248
+9001;Francisco Julian;Prado Salazar;Av. Tacna # 100 Lima;5282175;44414243
+9002;Gregorio Alberto;Romero Soto;Av. Perú # 1200 Lima;2595158;99914521
+9003;Lorenzo Bruno;Pinto Garza;Av. Arequipa # 5100 Lima;6621832;88872735
+9004;Juana Elisa;Rojas Saenz;Av. 28 de Julio # 789 Lima;5502172;77711212
+9005;María Sofia;Vespino Guerra;Av. Lima # 100 Lima;4400759; 66624481
+9006;Mirtha Katya;Belisario Veliz;Jr. Callao # 1210 Lima;3110759;55528415
+9007;Teresa Sandy;Portocarrero Paz;Calle Santa Rosa 999 Lima;4251019;44456789
+9008;Rosa Vanessa;Alegria Cruz;Av. Ricardo Palma # 123 Lima;5500769;33311223
+9009;Fabiola Tania;Sagrado Manzanero;Av. Abancay # 456 Lima;2204779;22275859
+9010;Miluzca Laura;Zapata Osorio;Av. Larco # 789 Lima;8800759;11122324

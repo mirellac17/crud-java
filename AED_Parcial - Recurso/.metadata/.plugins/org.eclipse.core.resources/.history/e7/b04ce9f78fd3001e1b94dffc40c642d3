@@ -1,0 +1,169 @@
+package arreglos;
+
+
+import clases.Producto;
+import clases.Venta;
+import java.util.ArrayList;
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+public class ArregloVentas {
+
+	// public class ArregloImpresoras {
+	// Atributo privado
+	private ArrayList<Venta> prod;
+	private String archivo;
+
+	// Constructor
+	public ArregloVentas(String archivo) {
+		prod = new ArrayList<Venta>();
+		this.archivo = archivo;
+		cargarVentas();
+	}
+
+	// Métodos de acceso: set/get
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	// Constructor
+	// public ArregloVentas() {
+	// vent = new ArrayList<Ventas>();
+	// adicionar(new Venta(3001, "Epson", 1350.0, 900, 100, 1000));
+	// adicionar(new Venta(3002, "HP", 2300.0, 800, 200, 1000));
+	// adicionar(new Venta(3003, "Samsung", 2100.0, 700, 300, 1000));
+	// adicionar(new Venta(3004, "Sony", 1900.0, 600, 400, 1000));
+	// adicionar(new Venta(3005, "LG", 1050.0, 500, 500, 1000));
+	// adicionar(new Venta(3006, "Samsung", 4210.0, 400, 600, 1000));
+	// adicionar(new Venta(3007, "Epson", 2090.0, 300, 700, 1000));
+	// adicionar(new Venta(3008, "LG", 3520.0, 4000, 4000, 8000));
+	// adicionar(new Venta(3009, "Canon", 3500.0, 100, 900, 1000));
+	// adicionar(new Venta(3010, "Logitech", 2200.0, 500, 500, 1000));
+//	}
+
+	int codigoVenta, int codigoCliente, int codigoProducto, int cantidad, double precio, String fecha)
+	// Operaciones públicas básicas
+	public void adicionar(Venta x) {
+		vent.add(x);
+	}
+
+	public Producto obtener(int i) {
+		return vent.get(i);
+	}
+
+	public int tamaño() {
+		return vent.size();
+	}
+
+	public void eliminar(Venta x) {
+		vent.remove(x);
+	}
+
+	public void reinicializarArreglo() {
+		if (tamaño() > 0)
+			vent.clear();
+	}
+
+	// }
+
+	public Venta buscar(int codigo) {
+		Venta x;
+		for (int i = 0; i < tamaño(); i++) {
+			x = obtener(i);
+			if (x.getCodigoVenta() == codigo)
+				return x;
+		}
+		return null;
+	}
+
+	public Venta buscar(String nombre) {
+		Venta x;
+		for (int i = 0; i < tamaño(); i++) {
+			x = obtener(i);
+			if (x.getNombre().equals(nombre))
+
+				//// if (x.getStockMaximo().equals(StockMaximo))
+				return x;
+		}
+		return null;
+	}
+
+	public Venta buscar(double precio) {
+		Venta x;
+		for (int i = 0; i < tamaño(); i++) {
+			x = obtener(i);
+			if (x.getPrecio() == precio)
+				return x;
+		}
+		return null;
+	}
+
+// Operaciones públicas complementarias
+	public int codigoCorrelativo() {
+		if (tamaño() == 0)
+			return 30001;
+		else
+			return obtener(tamaño() - 1).getCodigoVentas() + 1;
+	}
+
+	public void grabarVentas() {
+		try {
+			PrintWriter pw;
+			String linea;
+			Venta x;
+			pw = new PrintWriter(new FileWriter("archivo"));
+			for (int i = 0; i < prod.size(); i++) {
+				x = prod.get(i);
+//	for (int i=0; i<tamaño(); i++) {
+//	x = obtener(i);
+				linea = x.getCodigoProducto() + ";" + x.getPrecio() + ";" + x.getStockActual() + ";"
+						+ x.getStockMinimo() + ";" + x.getStockMaximo();
+//	x.getPeso() + ";" +
+//	x.getEstatura(); 
+				pw.println(linea);
+			}
+			pw.close();
+		} catch (Exception e) {
+		}
+	}
+
+	public void cargarVentas() {
+		try {
+			BufferedReader br;
+			String linea, nombre;
+			String s[];
+			Double Precio;
+			int stockActual;
+			int stockMinimo;
+			int stockMaximo;
+			int codigoProducto;
+//	double peso, estatura;
+			br = new BufferedReader(new FileReader("archivo"));
+			while ((linea = br.readLine()) != null) {
+				s = linea.split(";");
+				codigoProducto = Integer.parseInt(s[0].trim());
+				nombre = s[1].trim();
+				Precio = Double.parseDouble(s[2].trim());
+				stockMinimo = Integer.parseInt(s[3].trim());
+				stockActual = Integer.parseInt(s[4].trim());
+				stockMaximo = Integer.parseInt(s[5].trim());
+//	peso = Double.parseDouble(s[2].trim());
+//	estatura = Double.parseDouble(s[3].trim());
+				adicionar(new Producto(codigoProducto, nombre, Precio, stockActual, stockMinimo, stockMaximo));
+
+			}
+			br.close();
+		} catch (Exception e) {
+		}
+	}
+}
+
+

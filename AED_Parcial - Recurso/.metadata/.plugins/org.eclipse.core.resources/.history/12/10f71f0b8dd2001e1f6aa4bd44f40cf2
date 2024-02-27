@@ -1,0 +1,106 @@
+package arreglos;
+
+import clases.Clientes;
+import java.util.ArrayList;
+
+public class ArregloClientes {
+
+	// Atributo privado
+	private ArrayList<Clientes> cli;
+
+	// Constructor
+	public ArregloClientes () {
+	cli = new ArrayList <Cliente> ();
+	adicionar(new Cliente(1001, "Juan"," Prado Salazar", "Av. Tacna 100, Lima" ,"07557853", 4282175, 40414243));
+	adicionar(new Cliente(1002, "Pedro"," Romero Soto","Av. Perú 1200, Lima" , "11002348", 2795158,5051521));
+	adicionar(new Cliente(1003, "Luis"," Pinto Garza", "Av. Arequipa 5100, Lima" ,"62279345", 3827183,07172730));
+	adicionar(new Cliente(1004, "Daniel"," Rojas Saenz","Av. 28 de Julio 789, Lima" , "20977241",54802172,10111212));
+	adicionar(new Cliente(1005, "Jorge"," Espinal Vega","Av. Abancay 500, Lima" , "06377845",064-5100759, 3132181));
+	}
+
+	// Operaciones públicas básicas
+	public void adicionar(Cliente p) {
+		cli.add(p);
+	}
+
+	public int tamaño() {
+		return cli.size();
+	}
+
+	public Cliente obtener(int pos) {
+		return cli.get(pos);
+	}
+
+	public void eliminar(Cliente x) {
+		cli.remove(x);
+	}
+
+	public Cliente buscar(int codigo) {
+		Cliente x;
+		for (int i = 0; i < tamaño(); i++) {
+			x = obtener(i);
+			if (x.getCodigo() == codigo)
+				return x;
+		}
+		return null;
+	}
+
+	public Cliente buscar(String dni) {
+	Cliente x;
+	for (int i=0; i<tamaño(); i++) {
+		x = obtener(i);
+		if (x.getDni().equals(dni))
+		return x;
+		}
+		return null;
+		}
+		// Operaciones públicas complementarias
+		public int codigoCorrelativo() {
+		if (tamaño() == 0)
+		return 10001;
+		else
+		return obtener(tamaño()-1).getCodigo() + 1;
+		}
+		public void grabarPersonas() {
+		try {
+		PrintWriter pw;
+		String linea;
+		Cliente x;
+		pw = new PrintWriter(new FileWriter(archivo));
+		for (int i=0; i<tamaño(); i++) {
+		x = obtener(i);
+		linea = x.getCodigo() + ";" +
+		x.getNombre() + ";" +
+		x.getPeso() + ";" +
+		x.getEstatura();
+		pw.println(linea);
+		}
+		 pw.close();
+		 } catch (Exception e) {
+		 }
+		}
+		public void cargarPersonas() {
+		try {
+		 BufferedReader br;
+		String linea, nombre;
+		String s[];
+		int codigo;
+		double peso, estatura;
+		br = new BufferedReader(new FileReader(archivo));
+		 while ((linea = br.readLine()) != null) {
+		s = linea.split(";");
+		codigo = Integer.parseInt(s[0].trim());
+		nombre = s[1].trim();
+		peso = Double.parseDouble(s[2].trim());
+		estatura = Double.parseDouble(s[3].trim());
+		adicionar(new Cliente(codigo, nombre, peso, estatura));
+		}
+		br.close();
+		 } catch (Exception e) {
+		 }
+		}
+}
+
+	
+	
+}
